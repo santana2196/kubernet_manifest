@@ -1,6 +1,6 @@
 # Rabbitmq
 
-###### root@master:~# kubectl get pods -A
+##### root@master:~# kubectl get pods -A
 ###### NAMESPACE        NAME                                       READY   STATUS    RESTARTS        AGE
 ###### kube-system      calico-kube-controllers-74d5f9d7bb-fhcsx   1/1     Running   0               112s
 ###### kube-system      calico-node-8bvbj                          1/1     Running   0               112s
@@ -14,12 +14,12 @@
 ###### metallb-system   controller-67d9f4b5bc-x2qdg                1/1     Running   0               112s
 ###### metallb-system   speaker-c7zrz                              1/1     Running   0               112s
 
-###### root@master:~# kubectl apply -f  pv.yaml
+##### root@master:~# kubectl apply -f  pv.yaml
 ###### persistentvolume/pv-volume-rabbitmq01 created
 ###### persistentvolume/pv-volume-rabbitmq02 created
 ###### persistentvolume/pv-volume-rabbitmq03 created
 
-###### root@master:~# kubectl apply -f cluster-operator.yaml
+##### root@master:~# kubectl apply -f cluster-operator.yaml
 ###### namespace/rabbitmq-system created
 ###### customresourcedefinition.apiextensions.k8s.io/rabbitmqclusters.rabbitmq.com created
 ###### serviceaccount/rabbitmq-cluster-operator created
@@ -30,13 +30,13 @@
 ###### clusterrolebinding.rbac.authorization.k8s.io/rabbitmq-cluster-operator-rolebinding created
 ###### deployment.apps/rabbitmq-cluster-operator created
 
-###### root@master:~# kubectl create ns rabbitmq
+##### root@master:~# kubectl create ns rabbitmq
 ###### namespace/rabbitmq created
 
-###### root@master:~# kubectl apply -f rabbitmqcluster.yaml -n rabbitmq
+##### root@master:~# kubectl apply -f rabbitmqcluster.yaml -n rabbitmq
 ###### rabbitmqcluster.rabbitmq.com/production-rabbitmqcluster created
 
-###### root@master:~# kubectl get pods -A
+##### root@master:~# kubectl get pods -A
 ###### NAMESPACE         NAME                                        READY   STATUS     RESTARTS        AGE
 ###### kube-system       calico-kube-controllers-74d5f9d7bb-5vv8r    1/1     Running    0               4m21s
 ###### kube-system       calico-node-lz8fm                           1/1     Running    0               4m21s
@@ -54,13 +54,13 @@
 ###### rabbitmq          production-rabbitmqcluster-server-1         0/1     Init:0/1   0               2s
 ###### rabbitmq          production-rabbitmqcluster-server-2         0/1     Init:0/1   0               2s
 
-###### root@master:~# kubectl get pvc -A
+##### root@master:~# kubectl get pvc -A
 ###### NAMESPACE   NAME                                              STATUS   VOLUME                 CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
 ###### rabbitmq    persistence-production-rabbitmqcluster-server-0   Bound    pv-volume-rabbitmq01   30G        RWO                           <unset>                 103s
 ###### rabbitmq    persistence-production-rabbitmqcluster-server-1   Bound    pv-volume-rabbitmq03   30G        RWO                           <unset>                 103s
 ###### rabbitmq    persistence-production-rabbitmqcluster-server-2   Bound    pv-volume-rabbitmq02   30G        RWO                           <unset>                 103s
 
-###### root@master:~# kubectl get pods -A
+##### root@master:~# kubectl get pods -A
 ###### NAMESPACE         NAME                                        READY   STATUS    RESTARTS       AGE
 ###### kube-system       calico-kube-controllers-74d5f9d7bb-5vv8r    1/1     Running   0              6m9s
 ###### kube-system       calico-node-lz8fm                           1/1     Running   0              6m9s
@@ -78,12 +78,12 @@
 ###### rabbitmq          production-rabbitmqcluster-server-1         1/1     Running   0              110s
 ###### rabbitmq          production-rabbitmqcluster-server-2         1/1     Running   0              110s
 
-###### root@master:~# kubectl get service -n rabbitmq
+##### root@master:~# kubectl get service -n rabbitmq
 ###### NAME                               TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                                          AGE
 ###### production-rabbitmqcluster         LoadBalancer   10.105.201.40   192.168.0.100   5672:30255/TCP,15672:32232/TCP,15692:32502/TCP   11m
 ###### production-rabbitmqcluster-nodes   ClusterIP      None            <none>          4369/TCP,25672/TCP                               11m
 
-###### root@master:~# telnet  192.168.0.100 15672
+##### root@master:~# telnet  192.168.0.100 15672
 ###### Trying 192.168.0.100...
 ###### Connected to 192.168.0.100.
 ###### Escape character is '^]'.
