@@ -1,0 +1,19 @@
+apiVersion: v1                  
+kind: Pod                       
+metadata:
+  name: mysql-openshift
+  labels:
+    name: mysql-openshift
+spec:
+  containers:
+    - resources:
+        limits:
+            cpu: 0.5
+      image: centos/mysql-57-centos7:5.7
+      name: mysql
+      env:
+        - name: "MYSQL_ROOT_PASSWORD"
+          value: "j"         
+      ports:
+        - containerPort: 3306
+          name: mysql
